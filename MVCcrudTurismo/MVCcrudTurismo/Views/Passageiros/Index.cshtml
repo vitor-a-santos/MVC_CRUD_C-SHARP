@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MVCcrudTurismo.Models.Passageiro>
+
+@{
+    ViewData["Title"] = "Passageiros";
+}
+
+<h1>Passageiros</h1>
+
+<p>
+    
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePassageiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CpfPassageiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pagamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destino)
+            </th>
+            <th> <a asp-action="CreateAndUpdate" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Cadastrar Passageiro</a> </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomePassageiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CpfPassageiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pagamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destino)
+            </td>
+            <td>
+                <a asp-action="CreateAndUpdate" asp-route-id="@item.PassageiroId"><i class="fa fa-marker fa-lg"></i> </a> |
+                <a asp-action="Delete" asp-route-id="@item.PassageiroId" onclick="return confirm('Deseja realmente deletar?')" class="text-danger ml-1"><i class="fa fa-trash-alt fa-lg"></i> </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

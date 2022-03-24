@@ -1,0 +1,67 @@
+﻿@model MVCcrudTurismo.Models.Passageiro
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+
+
+<h4>Passageiro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="CreateAndUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PassageiroId" />
+            <div class="form-group">
+                <label asp-for="NomePassageiro" class="control-label"></label>
+                <input asp-for="NomePassageiro" class="form-control" />
+                <span asp-validation-for="NomePassageiro" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group ">
+                    <label asp-for="CpfPassageiro" class="control-label" maxlength="11"></label>
+                    <input asp-for="CpfPassageiro" class="form-control" />
+                    <span asp-validation-for="CpfPassageiro" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                    <label asp-for="Pagamento" class="control-label"></label>
+                    <select name="pagamento" class="form-select" aria-label="Default select example">
+                        <option selected> Forma de Pagamento </option>
+                        <option value="Crédito"> Cartão de Crédito </option>
+                        <option value="Boleto"> Boleto Bancário </option>
+                        <option value="Pix"> PIX / Transferência </option>
+                    </select>
+                    <span asp-validation-for="Pagamento" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group col-md-8">
+                <label asp-for="Destino" class="control-label"></label>
+                <select name="destino" class="form-select" aria-label="Default select example">
+                    <option selected> Pacote de Viagem </option>
+                    <option value="Chapada Diamantina-BA">Pacote CHAPADA DIAMANTINA</option>
+                    <option value="Chapada dos Veadeiros-GO">Pacote CHAPADA VEADEIROS</option>
+                    <option value="Chapada dos Guimaraes-MT">Pacote CHAPADA GUIMARÃES</option>
+                    <option value="Chapada das Mesas-MA">Pacote CHAPADA DAS MESAS </option>
+                    <option value="Chapada do Araripe-CE">Pacote CHAPADA ARARIPE </option>
+                </select>
+
+                <span asp-validation-for="Destino" class="text-danger"></span>
+            </div>
+            <div class="form-row col-md-6">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-block" />
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
